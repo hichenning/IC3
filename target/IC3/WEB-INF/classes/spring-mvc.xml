@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:component-scan base-package="cn.com.*" use-default-filters="false">
+		<context:include-filter type="annotation" 
+			expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" 
+			expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+	
+	<!-- 配置视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>	
+	
+	<!-- 把path 转为 view
+	<mvc:view-controller path="/MCreateProc" view-name="/createproce"/>
+	 -->
+	
+	
+		
+	<!--  如果没有配置请求对应的映射，则会访问资源文件（加入 jquery 的例子） -->
+	<mvc:default-servlet-handler/>
+	<!-- 和上面成对出现，只加上面的 则 @requestmapping 注解不工作-->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+</beans>
