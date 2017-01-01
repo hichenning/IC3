@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#butt").click(function(){
+			$("#show").html("<span>"+data+"</span>");
+		})
+		var data = new Array();
+		$(".A").click(function(){
+			if(this.checked){
+				data.push($(this).val());
+			}else{
+				data.splice($.inArray($(this).val(),data),1);
+			}
+		});
+	});
+</script>
+</head>
+<body>
+A<input type="checkbox" class="A" value="A"/><br/>
+B<input type="checkbox" class="A" value="B"/><br/>
+C<input type="checkbox" class="A" value="C"/><br/>
+D<input type="checkbox" class="A" value="D"/><br/>
+E<input type="checkbox" class="A" value="E"/><br/>
+<input type="button" id="butt" value="删除"/><br/>
+<p id = "show"></p>
+</body>
+</html>
