@@ -24,6 +24,14 @@ public class UserController{
 		md.addObject("user",user);
 		return md;
 	}
+	@RequestMapping("save")
+	public ModelAndView save(User user){
+		System.out.println(user);
+		ModelAndView md = new ModelAndView("success");
+		ls.save(user);
+		md.addObject("user",user);
+		return md;
+	}
 	
 	
 }

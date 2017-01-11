@@ -31,4 +31,10 @@ public class Dao implements IDao{
 		return user;
 	}
 
+	@Override
+	public void save(User user) {
+		getSession().save(user);
+		throw new RuntimeException("");
+	}
+
 }

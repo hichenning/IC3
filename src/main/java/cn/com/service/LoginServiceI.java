@@ -8,4 +8,5 @@ import cn.com.model.User;
 public interface LoginServiceI {
 	
 	public User query(String name);
+	public int save(User user);
 }

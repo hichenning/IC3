@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class Encode {
 	
 	public static String encode(String password){
+
 		return "HH"+password+"HH";
 	}
 	

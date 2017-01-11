@@ -8,8 +8,14 @@
 </head>
 <body>
 Spring - springmvc - hibernate 
-<form action="query">
-	<input type="submit" value="test">
+<form action="query" method="post">
+	<input type="submit" value="query">
+</form>
+<hr>
+<form action="save">
+	<input type="text" name="name"/>
+	<input type="password" name="password"/>
+	<input type="submit" value="save">
 </form>
 </body>
 </html>

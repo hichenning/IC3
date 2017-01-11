@@ -7,4 +7,5 @@ import cn.com.model.User;
 @Repository
 public interface IDao {
 	public User query();
+	public void save(User u);
 }
