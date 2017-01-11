@@ -1,5 +1,8 @@
 package cn.com.service;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
@@ -18,17 +21,20 @@ public class LoginService implements LoginServiceI{
 	private IDao dao;
 	
 	@Transactional(value=TxType.REQUIRED)
-	public User query(String name){
-		User user = dao.query();
+	public User query(){
+		User user = dao.query("FROM user",null);
 		user.setPassword(Encode.encode(user.getPassword()));
 		return user;
 	}
 
 	@Transactional(value=TxType.REQUIRED)
-	public int save(User user) {
+	public void save(User user) {
 		dao.save(user);
-		//System.out.println(1/0);
-		return 0;
+	}
+
+	@Override
+	public List query(Serializable id) {
+		return dao.query(User.class, id);
 	}
 	
 }

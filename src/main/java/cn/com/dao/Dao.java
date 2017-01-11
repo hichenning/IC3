@@ -1,7 +1,10 @@
 package cn.com.dao;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,20 +24,28 @@ public class Dao implements IDao{
 	//	return sessionFactory.openSession();
 	}
 
-	public User query() {
+	public List query(Class entiryclass, Serializable id ) {
+		Criteria criteria = getSession().createCriteria(entiryclass);
+		List<User> users = criteria.list();
+		return users;
+	}
+
+	@Override
+	public <T> void save(T t) {
+		getSession().save(t);
+		//throw new RuntimeException("");
+	}
+
+	@Override
+	public <T> T query(String hql, Collection params) {
 		Query query = getSession().createQuery("FROM User");
 		List<User> users = query.list();
 		User user = null;
 		if (!users.isEmpty()) {
 			user = users.get(0);
 		}
-		return user;
-	}
+		return (T) user;
 
-	@Override
-	public void save(User user) {
-		getSession().save(user);
-		throw new RuntimeException("");
 	}
 
 }

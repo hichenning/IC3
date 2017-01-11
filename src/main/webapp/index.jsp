@@ -9,6 +9,7 @@
 <body>
 Spring - springmvc - hibernate 
 <form action="query" method="post">
+	<input type="text" name="id" value="1">
 	<input type="submit" value="query">
 </form>
 <hr>
